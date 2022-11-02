@@ -1,3 +1,3 @@
 all:  
-	gcc main.c -o a
-	./a
+	gcc leituraArquivo/*.c leituraArquivo/*.h main2.c -o exec
+	./exec
