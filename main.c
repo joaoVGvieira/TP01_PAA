@@ -1,9 +1,11 @@
-#include "leituraArquivo/read.h"
-
-int main() {
-    infoArquivo *info;
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+   FILE *arq;
+    int **mat;
     char nome_arquivo[1000];
-    int opc;
+    int i,j,opc;
+    int l,c;
     do
     {
         printf("\n");
@@ -21,21 +23,41 @@ int main() {
         case 1 :
             printf("\nDIGITE O NOME DO ARQUIVO DE ENTRADA: ");
             scanf(" %[^\n]s ",nome_arquivo);
-            info = leitura(nome_arquivo);
+            if ((arq=fopen (nome_arquivo,"r"))==NULL){
+                printf ("\nErro na abertura do arquivo.\n");
+            }
+                
+            else{
+                printf("\nArquivo aberto com sucesso.\n");
+                fscanf(arq, "%d %d\n",&l,&c);
+                mat = malloc (l * sizeof (int*)) ;
+                for (i=0; i < l; i++)
+                    mat[i] = malloc (c * sizeof (int)) ;
+                for(i=0;i<l;i++){
+                    for(j=0;j<c;j++){
+                        fscanf(arq,"%d ", &mat[i][j]);
+                    }    
+                }
+            }
             break;
         case 2:
-         if (info->mat!=NULL)
+         if (arq!=NULL)
          {
-                imprimir_matriz(info);
+            printf("\nAREA MAPEADA:\n\n");
+             for(int i=0;i<l;i++){
+                for(int j=0;j<c;j++){
+                    printf("%d ",mat[i][j]);
+                } 
+            printf("\n");   
+            }
          }  
         break;
         case 0 :
-            printf("\nVOLTE SEMPRE!\n");
             break;
         default:
             printf("OPCAO INVALIDA!!!!");
             break;
         }
     } while (opc!=0);
-    return 0;
 }
+   

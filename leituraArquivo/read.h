@@ -10,5 +10,3 @@ typedef struct {
 
 infoArquivo *leitura( char* caminhoArquivo );
 
-void imprimir_matriz(infoArquivo *dados );
-
