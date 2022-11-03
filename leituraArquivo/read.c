@@ -30,8 +30,17 @@ infoArquivo *leitura( char* caminhoArquivo ){
                 info->mat[i][j] = valor;
             }
         }
-        
     }
     fclose( arq );
     return info;
+}
+
+void imprimir_matriz( infoArquivo *info ){
+        printf("\nAREA MAPEADA:\n\n");
+             for(int i=0;i<info->qntdLinhas;i++){
+                for(int j=0;j<info->qntdColunas;j++){
+                    printf("%d ",info->mat[i][j]);
+                } 
+            printf("\n");   
+        }
 }

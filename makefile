@@ -1,3 +1,3 @@
 all:  
-	gcc leituraArquivo/*.c leituraArquivo/*.h main2.c -o exec
+	gcc leituraArquivo/*.c  sequenciaFibonacci/*.c caminho/*.c main.c -o exec
 	./exec
