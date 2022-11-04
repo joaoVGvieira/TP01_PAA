@@ -32,21 +32,21 @@ int main() {
          }  
         break;
         case 3:
-            printf("\nCHAMANDO MOVIMENTAR");
             vetor = sequencia(200);
-            for(int i = 0; i < 200; i++){
-                printf(" %d ", vetor[i]);
-            }
-            printf("entrando na funcao movimentar\n");
             int b = 0;
             for ( int i = 0; i < matriz->colunas; i++ ) {
                 int a = i;
-                printf("entrando na funcao movimentar\n");
                 if ( matriz->matrizOriginal[0][i] == 1 ){
                     int resultado = movimentar( &b, &a, matriz, vetor, 1 );
                     if ( resultado == TRUE ) break;   
                 } 
             }
+             for(int i=0;i<matriz->linhas;i++){
+                for(int j=0;j<matriz->colunas;j++){
+                    printf("%d ",matriz->matrizPercorrida[i][j]);
+                } 
+            printf("\n");
+    }
             break;
         case 0 :
             printf("\nVOLTE SEMPRE!\n");
@@ -57,12 +57,7 @@ int main() {
         }
     } while (opc!=0);
     
-    for(int i=0;i<matriz->linhas;i++){
-                for(int j=0;j<matriz->colunas;j++){
-                    printf("%d ",matriz->matrizPercorrida[i][j]);
-                } 
-            printf("\n");
-    }
+   
 
     return 0;
 }
