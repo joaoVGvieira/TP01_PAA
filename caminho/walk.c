@@ -16,7 +16,9 @@ void atualizaPosicao(int *linha, int *coluna, int opcao){
     }
 }
 
-int movimentar(int* linha, int* coluna, matrizFazenda* matriz){
+//TODO condicao para nao tentar movimentar em alg posicao nao existente na matriz
+
+int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequeciaFibonnaci, int contador){
 
     int linhaOriginal = *linha;
     int colunaOriginal = *coluna;
@@ -31,14 +33,22 @@ int movimentar(int* linha, int* coluna, matrizFazenda* matriz){
 
         atualizaPosicao(linha, coluna, i); // muda o valor das variaveis linha e coluna
 
-        if( matriz->matrizOriginal[*linha][*coluna] ==  vetorFibonnaci[matriz->caminhosPercorridos] && matriz->matrizPercorrida[*linha][*coluna] != 0){ //Se o lugar que ira andar == a sequencia
-            if( movimentar(linha, coluna, matriz )){ //
-                return TRUE;
+        if( matriz->matrizOriginal[*linha][*coluna] ==  vetorFibonnaci[matriz->caminhosPercorridos]){ //Se o lugar que ira andar == a sequencia
+            if( matriz->matrizPercorrida[*linha][*coluna] != 0 ){ // Verifica se o lugar ja foi percorrido
+                matriz->matrizPercorrida[*linha][*coluna] = contador; // Salva na matriz percorrida o numero que visitou
+                if( movimentar(linha, coluna, matriz, sequeciaFibonnaci, contador+1) ){ // Verifica para essa posicao se o movimentar é verdadeiro
+                    return TRUE; 
+                }
             }
         }
 
-        *linha = linhaOriginal;
+        //voltando para os valores originais se o movimentar n der certo
+
+        *linha = linhaOriginal; 
         *coluna = colunaOriginal;
+        matriz->matrizPercorrida[*linha][*coluna] = 0;
         
     }
+
+    return FALSE;
 }
