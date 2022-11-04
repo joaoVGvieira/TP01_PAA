@@ -50,7 +50,13 @@ int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFib
          
         
     }
-    matriz->matrizPercorrida[*linha][*coluna] = 0;
+    matriz->matrizPercorrida[*linha][*coluna] = 0; 
+     
+    /*if (verificaValidade(&matriz->linhas, &matriz->linhas, matriz))
+    {
+        return TRUE;
+    }*/
+    
     return FALSE;
 }
 
@@ -61,4 +67,39 @@ int verificaLimite(int linha, int coluna, matrizFazenda* matriz) {
     else {
         return FALSE;
     }
+}
+
+void Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz){
+    int cont = 0;
+    int max =  (*linha)*(*coluna);
+    for (int i = 0; i < *linha; i++)
+    {
+        for (int j = 0; j < *coluna; j++)
+        {
+            if (matriz->matrizPercorrida[i][j] == 0)
+            {
+                cont++;
+            }
+            
+        }
+        
+    }
+    if (max ==cont)
+    {
+        printf("\nIMPOSSÍVEL!\n");
+    }else
+    {
+        for (int i = 0; i < matriz->linhas; i++)
+            {
+                for (int j = 0; j < matriz->colunas; j++)
+                {
+                    if (matriz->matrizPercorrida[i][j] != 0)
+                    {
+                        printf("%d %d\n",i+1,j+1);
+                    }
+            
+                }
+            }
+    }
+    
 }

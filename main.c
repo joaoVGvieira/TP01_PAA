@@ -12,8 +12,8 @@ int main() {
           " _________________(MENU PRINCIPAL)___________________ \n"
           "|                                                    |\n"
           "| LER ARQUIVO = 1                                    |\n"
-          "| IMPRIMIR MATRIZ = 2                                |\n"
-          "| IMPRIMIR SEQUENCIA DA SEQUENCIA = 3                |\n"          
+          "| CALCULAR E IMPRIMIR CAMINHO = 2                    |\n"
+          "| MATRIZ PERCORRIDA (PARA TESTE)  = 3                |\n"                    
           "| ENCERRAR OPERACOES = 0                             |\n"
           "|____________________________________________________|\n\n");
         printf("DIGITE A OPERACAO DESEJADA: ");
@@ -26,13 +26,7 @@ int main() {
             matriz = leitura(nome_arquivo);
             break;
         case 2:
-         if (matriz->matrizOriginal!=NULL)
-         {
-                imprimir_matriz(matriz);
-         }  
-        break;
-        case 3:
-            vetor = sequencia(200);
+            vetor = sequencia(500);
             int b = 0;
             for ( int i = 0; i < matriz->colunas; i++ ) {
                 int a = i;
@@ -44,13 +38,16 @@ int main() {
                     }  
                 } 
             }
-             for(int i=0;i<matriz->linhas;i++){
+            Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
+            break;
+            case 3:
+                for(int i=0;i<matriz->linhas;i++){
                 for(int j=0;j<matriz->colunas;j++){
                     printf("%-2d ",matriz->matrizPercorrida[i][j]);
                 } 
-            printf("\n");
-    }
-            break;
+                printf("\n");
+             }
+                break;
         case 0 :
             printf("\nVOLTE SEMPRE!\n");
             break;
