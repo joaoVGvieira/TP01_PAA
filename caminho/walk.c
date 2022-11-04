@@ -4,13 +4,13 @@ void atualizaPosicao(int *linha, int *coluna, int opcao){
     if(opcao == 0){ // 
         *linha+=1;
         return;
-    }if(opcao == 1){
+    }else if(opcao == 1){
         *coluna+=1;
         return;
-    }if(opcao == 2){
+    }else if(opcao == 2){
         *coluna-=1;
         return;
-    }if(opcao == 3){
+    }else if(opcao == 3){
         *linha -=1;
         return;
     }
@@ -44,12 +44,13 @@ int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFib
             }
         }
         //voltando para os valores originais se o movimentar n der certo
-
+        
         *linha = linhaOriginal; 
         *coluna = colunaOriginal;
-        matriz->matrizPercorrida[*linha][*coluna] = 0;
+         
         
     }
+    matriz->matrizPercorrida[*linha][*coluna] = 0;
     return FALSE;
 }
 

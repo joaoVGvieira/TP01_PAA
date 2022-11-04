@@ -38,12 +38,15 @@ int main() {
                 int a = i;
                 if ( matriz->matrizOriginal[0][i] == 1 ){
                     int resultado = movimentar( &b, &a, matriz, vetor, 1 );
-                    if ( resultado == TRUE ) break;   
+                    if ( resultado == TRUE ) {
+                        matriz->matrizPercorrida[0][i] = 1;
+                        break; 
+                    }  
                 } 
             }
              for(int i=0;i<matriz->linhas;i++){
                 for(int j=0;j<matriz->colunas;j++){
-                    printf("%d ",matriz->matrizPercorrida[i][j]);
+                    printf("%-2d ",matriz->matrizPercorrida[i][j]);
                 } 
             printf("\n");
     }
