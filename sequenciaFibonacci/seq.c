@@ -16,3 +16,15 @@ int* sequencia(int n){
     }
     return seq;
 }
+
+int main(){
+
+    int tamanho = 15;
+
+    int* vetor = sequencia(tamanho);
+
+    for(int i = 0; i < tamanho; i ++){
+        printf("fibonani[%d] = %d \n", i, vetor[i]);
+    }
+
+}
