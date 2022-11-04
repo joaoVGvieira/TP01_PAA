@@ -1,7 +1,7 @@
 #include "walk.h"
 
 void atualizaPosicao(int *linha, int *coluna, int opcao){
-    if(opcao == 0){
+    if(opcao == 0){ // 
         linha ++;
         return;
     }if(opcao == 1){
@@ -11,7 +11,7 @@ void atualizaPosicao(int *linha, int *coluna, int opcao){
         coluna --;
         return;
     }if(opcao == 3){
-        linha ++;
+        linha --;
         return;
     }
 }
@@ -20,8 +20,8 @@ void atualizaPosicao(int *linha, int *coluna, int opcao){
 
 int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequeciaFibonnaci, int contador){
 
-    int linhaOriginal = *linha;
-    int colunaOriginal = *coluna;
+    int linhaOriginal = *linha; // tem que começar do 1
+    int colunaOriginal = *coluna; // tem que começar do 1
 
     int* vetorFibonnaci = sequencia(matriz->linhas * matriz->colunas); // Salvando sequencia da sequencia de Fibonnaci
 
@@ -32,16 +32,16 @@ int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequeciaFibo
     for(int i = 0; i < 4; i++){ 
 
         atualizaPosicao(linha, coluna, i); // muda o valor das variaveis linha e coluna
-
-        if( matriz->matrizOriginal[*linha][*coluna] ==  vetorFibonnaci[matriz->caminhosPercorridos]){ //Se o lugar que ira andar == a sequencia
-            if( matriz->matrizPercorrida[*linha][*coluna] != 0 ){ // Verifica se o lugar ja foi percorrido
-                matriz->matrizPercorrida[*linha][*coluna] = contador; // Salva na matriz percorrida o numero que visitou
-                if( movimentar(linha, coluna, matriz, sequeciaFibonnaci, contador+1) ){ // Verifica para essa posicao se o movimentar é verdadeiro
-                    return TRUE; 
+        if(verificaLimite(*linha, *coluna, matriz)){ // verifica se é a borda da matriz
+            if( matriz->matrizOriginal[*linha][*coluna] ==  vetorFibonnaci[matriz->caminhosPercorridos]){ //Se o lugar que ira andar == a sequencia
+                if( matriz->matrizPercorrida[*linha][*coluna] != 0 ){ // Verifica se o lugar ja foi percorrido
+                    matriz->matrizPercorrida[*linha][*coluna] = contador; // Salva na matriz percorrida o numero que visitou
+                    if( movimentar(linha, coluna, matriz, sequeciaFibonnaci, contador+1) ){ // Verifica para essa posicao se o movimentar é verdadeiro
+                        return TRUE; 
+                    }
                 }
             }
         }
-
         //voltando para os valores originais se o movimentar n der certo
 
         *linha = linhaOriginal; 
@@ -51,4 +51,13 @@ int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequeciaFibo
     }
 
     return FALSE;
+}
+
+int verificaLimite(int linha, int coluna, matrizFazenda* matriz) {
+    if ( linha >= 0 && linha < matriz->linhas && coluna >= 0 && coluna < matriz->colunas ) {
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
 }
