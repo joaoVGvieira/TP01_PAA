@@ -35,11 +35,7 @@ int main() {
             printf("\nQual o tamanho do vetor de sequencia:");
             scanf("%d",&tamanho);
             vetor= sequencia(tamanho);
-            printf("\nSEQUENCIA: ");
-            for(int i = 0; i < tamanho; i ++){
-                printf("%d ", vetor[i]);
-            }
-            printf("\n");
+            imprimirSequencia(vetor,tamanho);
             break;;
         case 0 :
             printf("\nVOLTE SEMPRE!\n");

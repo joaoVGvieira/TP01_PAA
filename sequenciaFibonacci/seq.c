@@ -16,3 +16,11 @@ int* sequencia(int n){
     }
     return seq;
 }
+
+void imprimirSequencia(int vetor[],int n){
+        printf("\nSEQUENCIA: ");
+        for(int i = 0; i < n; i ++){
+            printf("%d ", vetor[i]);
+        }
+        printf("\n");
+}

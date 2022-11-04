@@ -4,3 +4,5 @@
 int fibonacci(int n);
 
 int* sequencia(int n);
+
+void imprimirSequencia(int vetor[],int n);
