@@ -72,6 +72,7 @@ int verificaLimite(int linha, int coluna, matrizFazenda* matriz) {
 void Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz){
     int cont = 0;
     int max =  (*linha)*(*coluna);
+    int cont2= 1;
     for (int i = 0; i < *linha; i++)
     {
         for (int j = 0; j < *coluna; j++)
@@ -93,9 +94,12 @@ void Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz){
             {
                 for (int j = 0; j < matriz->colunas; j++)
                 {
-                    if (matriz->matrizPercorrida[i][j] != 0)
+                    if (matriz->matrizPercorrida[i][j] == cont2)
                     {
                         printf("%d %d\n",i+1,j+1);
+                        i =0;
+                        j=0;
+                        cont2++;
                     }
             
                 }
