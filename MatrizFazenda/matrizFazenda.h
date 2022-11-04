@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef struct matrizFazenda{
 
     int linhas; 
@@ -7,3 +10,7 @@ typedef struct matrizFazenda{
     int caminhosPercorridos; // numero de campos de batats colhidos
 
 }matrizFazenda;
+
+matrizFazenda *leitura( char* caminhoArquivo );
+
+void imprimir_matriz( matrizFazenda *dados );

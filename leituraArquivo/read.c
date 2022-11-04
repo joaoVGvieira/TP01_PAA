@@ -1,10 +1,10 @@
-#include "read.h"
+#include "../MatrizFazenda/matrizFazenda.h"
 
-infoArquivo *leitura( char* caminhoArquivo ){
+matrizFazenda *leitura( char* caminhoArquivo ){
     
     FILE *arq;
-    infoArquivo *info; // Para termos linhas e colunas do arquivo armazenadas
-    info = (infoArquivo*)malloc(sizeof(infoArquivo));
+    matrizFazenda *matriz; // Para termos linhas e colunas do arquivo armazenadas
+    matriz = (matrizFazenda*)malloc(sizeof(matrizFazenda));
 
     arq = fopen( caminhoArquivo, "r" );
     if ( arq == NULL ) {
@@ -12,35 +12,45 @@ infoArquivo *leitura( char* caminhoArquivo ){
     }
     else {
         printf("\nLEITURA DE ARQUIVO FEITA COM SUCESSO!\n");
-        fscanf( arq, "%d %d", &info->qntdLinhas, &info->qntdColunas ); // lendo qntdLinhas e qntdColunas
+        fscanf( arq, "%d %d", &matriz->linhas, &matriz->colunas ); // lendo linhas e colunas
         // no arquivo separado por espaço
         
-        info->mat = ( int ** )malloc( sizeof( int ) * info->qntdLinhas * 2 );
-        for ( int i = 0; i < info->qntdLinhas; i++ ){
-            info->mat[i] = ( int * )malloc( sizeof( int ) * info->qntdColunas * 2 );
+        matriz->matrizOriginal = ( int ** )malloc( sizeof( int ) * matriz->linhas * 2 );
+        for ( int i = 0; i < matriz->linhas; i++ ){
+            matriz->matrizOriginal[i] = ( int * )malloc( sizeof( int ) * matriz->colunas * 2 );
 
-            for ( int j = 0; j < info->qntdColunas; j++ ) {
+            for ( int j = 0; j < matriz->colunas; j++ ) {
                 int valor;
                 
-                if ( j < info->qntdColunas - 1 ) { // Lendo os valores no arquivo
+                if ( j < matriz->colunas - 1 ) { // Lendo os valores no arquivo
                     fscanf( arq, "%d ", &valor );
                 }
                 else { // Lendo o último valor no arquivo
                     fscanf( arq, "%d", &valor );
                 }
-                info->mat[i][j] = valor;
+                matriz->matrizOriginal[i][j] = valor;
             }
         }
     }
+    
+    matriz->matrizPercorrida = ( int ** )malloc( sizeof( int ) * matriz->linhas * 2 );
+    for ( int i = 0; i < matriz->linhas; i++ ){
+            matriz->matrizPercorrida[i] = ( int * )malloc( sizeof( int ) * matriz->colunas * 2 );
+    }
+    for( int i=0;i<matriz->linhas;i++ ){
+                for( int j=0;j<matriz->colunas;j++ ){
+                    matriz->matrizPercorrida[i][j] = 0;
+                }
+    }
     fclose( arq );
-    return info;
+    return matriz;
 }
 
-void imprimir_matriz( infoArquivo *info ){
+void imprimir_matriz( matrizFazenda *matriz ){
         printf("\nAREA MAPEADA:\n\n");
-             for(int i=0;i<info->qntdLinhas;i++){
-                for(int j=0;j<info->qntdColunas;j++){
-                    printf("%d ",info->mat[i][j]);
+             for(int i=0;i<matriz->linhas;i++){
+                for(int j=0;j<matriz->colunas;j++){
+                    printf("%d ",matriz->matrizOriginal[i][j]);
                 } 
             printf("\n");   
         }
