@@ -1,5 +1,3 @@
-
-
 typedef struct matrizFazenda{
 
     int linhas; 

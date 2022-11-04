@@ -11,6 +11,7 @@ infoArquivo *leitura( char* caminhoArquivo ){
         printf("\nARQUIVO NAO ENCONTRADO\n");
     }
     else {
+        printf("\nLEITURA DE ARQUIVO FEITA COM SUCESSO!\n");
         fscanf( arq, "%d %d", &info->qntdLinhas, &info->qntdColunas ); // lendo qntdLinhas e qntdColunas
         // no arquivo separado por espaço
         

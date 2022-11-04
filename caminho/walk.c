@@ -1,8 +1,4 @@
-#include "../sequenciaFibonacci/seq.h"
-#include "../leituraArquivo/read.h"
-#include "../matrizFazenda/matrizFazenda.h"
-
-#include <math.h>
+#include "walk.h"
 
 void atualizaPosicao(int *linha, int *coluna, int opcao){
     if(opcao == 0){
