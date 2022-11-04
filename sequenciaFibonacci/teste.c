@@ -1,4 +1,5 @@
-#include "seq.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int fibonacci(int n){
     int i = 1;
@@ -29,11 +30,14 @@ int* sequencia(int n){
 
     return seq;
 }
+int main(){
 
-void imprimirSequencia(int vetor[],int n){
-        printf("\nSEQUENCIA: ");
-        for(int i = 0; i < n; i ++){
-            printf("%d ", vetor[i]);
-        }
-        printf("\n");
+    int *vetor = sequencia(200);
+    for(int i = 0; i < 200; i++){
+        printf(" %d ", vetor[i]);
+    }
+
 }
+
+
+

@@ -28,7 +28,7 @@ int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFib
     if(*linha == matriz->linhas-1){ //condicao de parada final
         return TRUE;
     }   
-
+    printf("Ta na funcao movimentar\n");
     for(int i = 0; i < 4; i++){ 
 
         atualizaPosicao(linha, coluna, i); // muda o valor das variaveis linha e coluna
