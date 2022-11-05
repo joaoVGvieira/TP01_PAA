@@ -76,7 +76,7 @@ int main() {
              }
                 break;
         case 0 :
-            printf("\nPROGRAMA ENCERRADO!\n");
+            printf("\nPROGRAMA ENCERRADO!\n\n");
             break;
         default:
             printf("OPCAO INVALIDA!!!!");
