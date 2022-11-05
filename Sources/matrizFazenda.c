@@ -1,4 +1,4 @@
-#include "../MatrizFazenda/matrizFazenda.h"
+#include "../Libs/matrizFazenda.h"
 
 matrizFazenda *leitura( char* caminhoArquivo ){
     

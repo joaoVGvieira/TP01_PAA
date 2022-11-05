@@ -1,6 +1,6 @@
 #include <time.h>
-#include "sequenciaFibonacci/seq.h"
-#include "caminho/walk.h"
+#include "Libs/seq.h"
+#include "Libs/walk.h"
 int main() {
     matrizFazenda *matriz;
     clock_t tempo_execu;
@@ -10,6 +10,7 @@ int main() {
     char nome_arquivo[1000];
     int opc,tamanho;
     int* vetor;
+    int cont=1;
     do
     {
         printf("\n");
@@ -47,7 +48,7 @@ int main() {
                         }  
                     } 
                 }
-                Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
+                cont = Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
                 tempo_execu =  clock()- tempo_execu;
                 tempoTotal = ((float)tempo_execu)/((float)CLOCKS_PER_SEC);
                 break;
@@ -60,8 +61,10 @@ int main() {
             if (contChamadas!=0)
             {
                 printf("\n\n------- RESULTADO DO MODO ANALISE -------\n\n");
+                printf("Nome do arquivo analisado: %s\n",nome_arquivo);
                 printf("Tempo de Execucao: %f segundos\n",tempoTotal);
                 printf("Numeros de Chamadas Recursivas:%d \n",contChamadas);
+                printf("Numero maximo de Recursao:%d \n",cont);
             }else
             {
                 printf("\nSEM DADOS PARA SER ANALISADOS!!! CALCULE O CAMINHO PRIMEIRO!!!\n");

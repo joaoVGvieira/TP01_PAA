@@ -1,5 +1,5 @@
-#include "../sequenciaFibonacci/seq.h"
-#include "../MatrizFazenda/matrizFazenda.h"
+#include "seq.h"
+#include "matrizFazenda.h"
 
 #define TRUE 1
 #define FALSE 0
@@ -13,4 +13,4 @@ int verificaLimite(int linha, int coluna, matrizFazenda* matriz);
 
 int verificaValidade(int* linha, int* coluna, matrizFazenda* matriz);
 
-void Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz);
+int Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz);

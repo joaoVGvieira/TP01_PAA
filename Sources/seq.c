@@ -1,4 +1,4 @@
-#include "seq.h"
+#include "../Libs/seq.h"
 
 int fibonacci(int n){
     int i = 1;
