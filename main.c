@@ -1,7 +1,12 @@
+#include <time.h>
 #include "sequenciaFibonacci/seq.h"
 #include "caminho/walk.h"
 int main() {
     matrizFazenda *matriz;
+    clock_t tempo_execu;
+    float tempoTotal;
+    int contChamadas=0;
+    tempo_execu = clock();
     char nome_arquivo[1000];
     int opc,tamanho;
     int* vetor;
@@ -13,7 +18,8 @@ int main() {
           "|                                                    |\n"
           "| LER ARQUIVO = 1                                    |\n"
           "| CALCULAR E IMPRIMIR CAMINHO = 2                    |\n"
-          "| MATRIZ PERCORRIDA (PARA TESTE)  = 3                |\n"                    
+          "| DADOS DO  MODO ANALISE = 3                         |\n"
+          "| MATRIZ PERCORRIDA (PARA TESTE)  = 4                |\n"                    
           "| ENCERRAR OPERACOES = 0                             |\n"
           "|____________________________________________________|\n\n");
         printf("DIGITE A OPERACAO DESEJADA: ");
@@ -26,21 +32,42 @@ int main() {
             matriz = leitura(nome_arquivo);
             break;
         case 2:
-            vetor = sequencia(500);
-            int b = 0;
-            for ( int i = 0; i < matriz->colunas; i++ ) {
-                int a = i;
-                if ( matriz->matrizOriginal[0][i] == 1 ){
-                    int resultado = movimentar( &b, &a, matriz, vetor, 1 );
-                    if ( resultado == TRUE ) {
-                        matriz->matrizPercorrida[0][i] = 1;
-                        break; 
-                    }  
-                } 
+            if (matriz->matrizOriginal!=NULL)
+            {
+                tempo_execu = clock();
+                vetor = sequencia(500);
+                int b = 0;
+                for ( int i = 0; i < matriz->colunas; i++ ) {
+                    int a = i;
+                    if ( matriz->matrizOriginal[0][i] == 1 ){
+                        int resultado = movimentar( &b, &a, matriz, vetor, 1,&contChamadas);
+                        if ( resultado == TRUE ) {
+                            matriz->matrizPercorrida[0][i] = 1;
+                            break; 
+                        }  
+                    } 
+                }
+                Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
+                tempo_execu =  clock()- tempo_execu;
+                tempoTotal = ((float)tempo_execu)/((float)CLOCKS_PER_SEC);
+                break;
+            }else
+            {
+                printf("\nNENHUM ARQUIVO LIDO!!!\n");
             }
-            Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
             break;
-            case 3:
+        case 3:
+            if (contChamadas!=0)
+            {
+                printf("\n\n------- RESULTADO DO MODO ANALISE -------\n\n");
+                printf("Tempo de Execucao: %f segundos\n",tempoTotal);
+                printf("Numeros de Chamadas Recursivas:%d \n",contChamadas);
+            }else
+            {
+                printf("\nSEM DADOS PARA SER ANALISADOS!!! CALCULE O CAMINHO PRIMEIRO!!!\n");
+            }
+            break;
+        case 4:
                 for(int i=0;i<matriz->linhas;i++){
                 for(int j=0;j<matriz->colunas;j++){
                     printf("%-2d ",matriz->matrizPercorrida[i][j]);
@@ -49,7 +76,7 @@ int main() {
              }
                 break;
         case 0 :
-            printf("\nVOLTE SEMPRE!\n");
+            printf("\nPROGRAMA ENCERRADO!\n");
             break;
         default:
             printf("OPCAO INVALIDA!!!!");

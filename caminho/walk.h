@@ -5,7 +5,7 @@
 #define FALSE 0
 void caminhar();
 
-int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFibonnaci, int contador);
+int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFibonnaci, int contador,int *contChamadas);
 
 void atualizaPosicao(int *linha, int *coluna, int opcao);
 
