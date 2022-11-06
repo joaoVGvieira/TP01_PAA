@@ -11,6 +11,4 @@ void atualizaPosicao(int *linha, int *coluna, int opcao);
 
 int verificaLimite(int linha, int coluna, matrizFazenda* matriz);
 
-int verificaValidade(int* linha, int* coluna, matrizFazenda* matriz);
-
-int Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz);
+void Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz);

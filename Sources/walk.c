@@ -67,7 +67,7 @@ int verificaLimite(int linha, int coluna, matrizFazenda* matriz) {
     }
 }
 
-int Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz){
+void Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz){
     int cont = 0;
     int max =  (*linha)*(*coluna);
     int cont2= 1;
@@ -86,7 +86,7 @@ int Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz){
     if (max ==cont)
     {
         printf("\nIMPOSSÍVEL!\n");
-        return FALSE;
+        return;
     }else
     {
         for (int i = 0; i < matriz->linhas; i++)
@@ -104,5 +104,4 @@ int Imprimircaminho(int* linha, int* coluna, matrizFazenda* matriz){
                 }
             }
     }
-    return cont2-=1;
 }

@@ -11,11 +11,8 @@ int main() {
     int opc,tamanho;
     int caminhoCalculado=FALSE;
     int* vetor;
-    // int cont=1;
-    
     do
     {
-    int cont=1;
         printf("\n");
         printf(
           " _________________(MENU PRINCIPAL)___________________ \n"
@@ -23,7 +20,6 @@ int main() {
           "| LER ARQUIVO = 1                                    |\n"
           "| CALCULAR E IMPRIMIR CAMINHO = 2                    |\n"
           "| DADOS DO  MODO ANALISE = 3                         |\n"
-          "| MATRIZ PERCORRIDA (PARA TESTE)  = 4                |\n"                    
           "| ENCERRAR OPERACOES = 0                             |\n"
           "|____________________________________________________|\n\n");
         printf("DIGITE A OPERACAO DESEJADA: ");
@@ -54,7 +50,7 @@ int main() {
                         }  
                     } 
                 }
-                cont = Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
+                Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
                 tempo_execu =  clock() - tempo_execu;
                 tempoTotal = ((float)tempo_execu)/((float)CLOCKS_PER_SEC);
                 caminhoCalculado = TRUE;
@@ -72,33 +68,28 @@ int main() {
                 printf("Tempo de Execucao: %f segundos\n",tempoTotal);
                 printf("Numeros de Chamadas Recursivas:%d \n",contChamadas);
                 printf("Numero maximo de Recursao:%d \n",maxProfundidade);
-                
-                
-            }else
-            {
-                printf("\nSEM DADOS PARA SER ANALISADOS!!! CALCULE O CAMINHO PRIMEIRO!!!\n");
-            }
-            break;
-        case 4:
 
+                printf("\n    --- MATRIZ PERCORRIDA ---\n\n");
                 for(int i=0;i<matriz->linhas;i++){
                     for(int j=0;j<matriz->colunas;j++){
                     printf("%-2d ",matriz->matrizPercorrida[i][j]);
                 } 
                 printf("\n");
              }
-             printf("\nSe a matriz estiver zerada e porque nao possui solucao!\n");
+             printf("\nOBS: Se a matriz estiver zerada e porque nao possui solucao!\n");
                 break;
+            }else
+            {
+                printf("\nSEM DADOS PARA SER ANALISADOS!!! CALCULE O CAMINHO PRIMEIRO!!!\n");
+            }
+            break;
         case 0 :
             printf("\nPROGRAMA ENCERRADO!\n\n");
             break;
         default:
-            printf("OPCAO INVALIDA!!!!");
+            printf("\nOPCAO INVALIDA!!!!\n");
             break;
         }
     } while (opc!=0);
-    
-   
-
     return 0;
 }
