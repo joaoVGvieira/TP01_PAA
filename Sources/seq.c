@@ -17,7 +17,7 @@ int* sequencia(int n){
     int *seq = (int *)malloc( n * sizeof(int) );
     int pos = 1;
     seq[0] = 1;
-    int contrepe = 2;
+    int contrepe = 2; // Contador de Repetições.
     while(pos != 200){
         for(int i = 0; i < contrepe; i ++){
             if(pos == 200) break;
