@@ -19,7 +19,8 @@ int main() {
           "|                                                    |\n"
           "| LER ARQUIVO = 1                                    |\n"
           "| CALCULAR E IMPRIMIR CAMINHO = 2                    |\n"
-          "| DADOS DO  MODO ANALISE = 3                         |\n"
+          "| IMPRIMIR CAMINHO EM FORMA DE MATRIZ = 3            |\n"
+          "| DADOS DO MODO ANALISE = 4                          |\n"
           "| ENCERRAR OPERACOES = 0                             |\n"
           "|____________________________________________________|\n\n");
         printf("DIGITE A OPERACAO DESEJADA: ");
@@ -60,7 +61,7 @@ int main() {
                 printf("\nNENHUM ARQUIVO LIDO OU CAMINHO JA FOI CALCULADO!\n");
             }
             break;
-        case 3:
+        case 4:
             if (contChamadas!=0 || maxProfundidade!=0 || vetor != NULL)
             {
                 printf("\n\n------- RESULTADO DO MODO ANALISE -------\n\n");
@@ -68,8 +69,13 @@ int main() {
                 printf("Tempo de Execucao: %f segundos\n",tempoTotal);
                 printf("Numeros de Chamadas Recursivas:%d \n",contChamadas);
                 printf("Numero maximo de Recursao:%d \n",maxProfundidade);
-
-                printf("\n    --- MATRIZ PERCORRIDA ---\n\n");
+            }else
+            {
+                printf("\nSEM DADOS PARA SER ANALISADOS!!! CALCULE O CAMINHO PRIMEIRO!!!\n");
+            }
+            break;
+        case 3:
+            printf("\n\n    ----- RESULTADO EM MATRIZ CAMINHO PERCORRIDO ----\n\n");
                 for(int i=0;i<matriz->linhas;i++){
                     for(int j=0;j<matriz->colunas;j++){
                     printf("%-2d ",matriz->matrizPercorrida[i][j]);
@@ -78,10 +84,6 @@ int main() {
              }
              printf("\nOBS: Se a matriz estiver zerada e porque nao possui solucao!\n");
                 break;
-            }else
-            {
-                printf("\nSEM DADOS PARA SER ANALISADOS!!! CALCULE O CAMINHO PRIMEIRO!!!\n");
-            }
             break;
         case 0 :
             printf("\nPROGRAMA ENCERRADO!\n\n");
