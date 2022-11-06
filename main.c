@@ -75,7 +75,7 @@ int main() {
             }
             break;
         case 3:
-            printf("\n\n    ----- RESULTADO EM MATRIZ CAMINHO PERCORRIDO ----\n\n");
+            printf("\n\n    ----- RESULTADO EM MATRIZ DO CAMINHO PERCORRIDO ----\n\n");
                 for(int i=0;i<matriz->linhas;i++){
                     for(int j=0;j<matriz->colunas;j++){
                     printf("%-2d ",matriz->matrizPercorrida[i][j]);
