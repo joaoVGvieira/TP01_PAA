@@ -71,12 +71,14 @@ int main() {
             }
             break;
         case 4:
+
                 for(int i=0;i<matriz->linhas;i++){
-                for(int j=0;j<matriz->colunas;j++){
+                    for(int j=0;j<matriz->colunas;j++){
                     printf("%-2d ",matriz->matrizPercorrida[i][j]);
                 } 
                 printf("\n");
              }
+             printf("\nSe a matriz estiver zerada e porque nao possui solucao!\n");
                 break;
         case 0 :
             printf("\nPROGRAMA ENCERRADO!\n\n");

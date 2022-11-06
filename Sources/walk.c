@@ -1,16 +1,17 @@
 #include "../Libs/walk.h"
 
+
 void atualizaPosicao(int *linha, int *coluna, int opcao){
-    if(opcao == 0){ // 
+    if(opcao == 0){ // baixo
         *linha+=1;
         return;
-    }else if(opcao == 1){
+    }else if(opcao == 1){ // direita
         *coluna+=1;
         return;
-    }else if(opcao == 2){
+    }else if(opcao == 2){ // esquerda
         *coluna-=1;
         return;
-    }else if(opcao == 3){
+    }else if(opcao == 3){ //cima
         *linha -=1;
         return;
     }
@@ -19,7 +20,8 @@ void atualizaPosicao(int *linha, int *coluna, int opcao){
 //TODO condicao para nao tentar movimentar em alg posicao nao existente na matriz
 
 int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFibonnaci, int contador, int *contChamadas){
-
+    *contChamadas = *contChamadas + 1;
+    printf("linha = %d , coluna = %d contChamdas = %d \n", *linha, *coluna, *contChamadas);
     
     int linhaOriginal = *linha; // tem que começar do 1
     int colunaOriginal = *coluna; // tem que começar do 1
@@ -36,7 +38,6 @@ int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFib
             if( matriz->matrizOriginal[*linha][*coluna] ==  sequenciaFibonnaci[contador]){ //Se o lugar que ira andar == a sequencia
                 if( matriz->matrizPercorrida[*linha][*coluna] == 0 ){ // Verifica se o lugar ja foi percorrido
                     matriz->matrizPercorrida[*linha][*coluna] = contador+1; // Salva na matriz percorrida o numero que visitou
-                      *contChamadas +=1;
                     if( movimentar(linha, coluna, matriz, sequenciaFibonnaci, contador+1,contChamadas) ){ // Verifica para essa posicao se o movimentar é verdadeiro
                         return TRUE;
                     }
