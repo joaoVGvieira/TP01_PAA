@@ -18,8 +18,8 @@ int main() {
           " _________________(MENU PRINCIPAL)___________________ \n"
           "|                                                    |\n"
           "| LER ARQUIVO = 1                                    |\n"
-          "| CALCULAR E IMPRIMIR CAMINHO = 2                    |\n"
-          "| IMPRIMIR CAMINHO EM FORMA DE MATRIZ = 3            |\n"
+          "| CALCULAR E EXIBIR CAMINHO = 2                      |\n"
+          "| EXIBIR CAMINHO EM FORMA DE MATRIZ = 3              |\n"
           "| DADOS DO MODO ANALISE = 4                          |\n"
           "| ENCERRAR OPERACOES = 0                             |\n"
           "|____________________________________________________|\n\n");
