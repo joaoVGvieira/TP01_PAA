@@ -5,14 +5,16 @@ int main() {
     matrizFazenda *matriz;
     clock_t tempo_execu;
     float tempoTotal;
-    int contChamadas=0;
+    int contChamadas, maxProfundidade;
     tempo_execu = clock();
     char nome_arquivo[1000];
     int opc,tamanho;
     int* vetor;
-    int cont=1;
+    // int cont=1;
+    
     do
     {
+    int cont=1;
         printf("\n");
         printf(
           " _________________(MENU PRINCIPAL)___________________ \n"
@@ -31,6 +33,8 @@ int main() {
             printf("\nDIGITE O NOME DO ARQUIVO DE ENTRADA: ");
             scanf(" %[^\n]s ",nome_arquivo);
             matriz = leitura(nome_arquivo);
+            contChamadas = 0;
+            maxProfundidade = 0;
             break;
         case 2:
             if (matriz->matrizOriginal!=NULL)
@@ -41,7 +45,7 @@ int main() {
                 for ( int i = 0; i < matriz->colunas; i++ ) {
                     int a = i;
                     if ( matriz->matrizOriginal[0][i] == 1 ){
-                        int resultado = movimentar( &b, &a, matriz, vetor, 1,&contChamadas);
+                        int resultado = movimentar( &b, &a, matriz, vetor, 1,&contChamadas, &maxProfundidade);
                         if ( resultado == TRUE ) {
                             matriz->matrizPercorrida[0][i] = 1;
                             break; 
@@ -49,7 +53,7 @@ int main() {
                     } 
                 }
                 cont = Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
-                tempo_execu =  clock()- tempo_execu;
+                tempo_execu =  clock() - tempo_execu;
                 tempoTotal = ((float)tempo_execu)/((float)CLOCKS_PER_SEC);
                 break;
             }else
@@ -58,13 +62,15 @@ int main() {
             }
             break;
         case 3:
-            if (contChamadas!=0)
+            if (contChamadas!=0 || maxProfundidade!=0 || vetor != NULL)
             {
                 printf("\n\n------- RESULTADO DO MODO ANALISE -------\n\n");
                 printf("Nome do arquivo analisado: %s\n",nome_arquivo);
                 printf("Tempo de Execucao: %f segundos\n",tempoTotal);
                 printf("Numeros de Chamadas Recursivas:%d \n",contChamadas);
-                printf("Numero maximo de Recursao:%d \n",cont);
+                printf("Numero maximo de Recursao:%d \n",maxProfundidade);
+                
+                
             }else
             {
                 printf("\nSEM DADOS PARA SER ANALISADOS!!! CALCULE O CAMINHO PRIMEIRO!!!\n");

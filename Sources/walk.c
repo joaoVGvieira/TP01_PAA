@@ -19,9 +19,12 @@ void atualizaPosicao(int *linha, int *coluna, int opcao){
 
 //TODO condicao para nao tentar movimentar em alg posicao nao existente na matriz
 
-int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFibonnaci, int contador, int *contChamadas){
+int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFibonnaci, int contador, int *contChamadas, int* maxProfundidade){
+
     *contChamadas = *contChamadas + 1;
-    printf("linha = %d , coluna = %d contChamdas = %d \n", *linha, *coluna, *contChamadas);
+    if(contador > *maxProfundidade){
+        *maxProfundidade = contador;
+    }
     
     int linhaOriginal = *linha; // tem que começar do 1
     int colunaOriginal = *coluna; // tem que começar do 1
@@ -38,7 +41,7 @@ int movimentar(int* linha, int* coluna, matrizFazenda* matriz, int* sequenciaFib
             if( matriz->matrizOriginal[*linha][*coluna] ==  sequenciaFibonnaci[contador]){ //Se o lugar que ira andar == a sequencia
                 if( matriz->matrizPercorrida[*linha][*coluna] == 0 ){ // Verifica se o lugar ja foi percorrido
                     matriz->matrizPercorrida[*linha][*coluna] = contador+1; // Salva na matriz percorrida o numero que visitou
-                    if( movimentar(linha, coluna, matriz, sequenciaFibonnaci, contador+1,contChamadas) ){ // Verifica para essa posicao se o movimentar é verdadeiro
+                    if( movimentar(linha, coluna, matriz, sequenciaFibonnaci, contador+1,contChamadas, maxProfundidade) ){ // Verifica para essa posicao se o movimentar é verdadeiro
                         return TRUE;
                     }
                 }
