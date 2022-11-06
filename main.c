@@ -83,7 +83,6 @@ int main() {
                 printf("\n");
              }
              printf("\nOBS: Se a matriz estiver zerada e porque nao possui solucao!\n");
-                break;
             break;
         case 0 :
             printf("\nPROGRAMA ENCERRADO!\n\n");
