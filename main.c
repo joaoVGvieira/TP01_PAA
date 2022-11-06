@@ -9,6 +9,7 @@ int main() {
     tempo_execu = clock();
     char nome_arquivo[1000];
     int opc,tamanho;
+    int caminhoCalculado=FALSE;
     int* vetor;
     // int cont=1;
     
@@ -35,9 +36,10 @@ int main() {
             matriz = leitura(nome_arquivo);
             contChamadas = 0;
             maxProfundidade = 0;
+            caminhoCalculado = FALSE;
             break;
         case 2:
-            if (matriz->matrizOriginal!=NULL)
+            if (matriz->matrizOriginal!=NULL && caminhoCalculado == FALSE)
             {
                 tempo_execu = clock();
                 vetor = sequencia(500);
@@ -55,10 +57,11 @@ int main() {
                 cont = Imprimircaminho(&matriz->linhas,&matriz->colunas,matriz);
                 tempo_execu =  clock() - tempo_execu;
                 tempoTotal = ((float)tempo_execu)/((float)CLOCKS_PER_SEC);
+                caminhoCalculado = TRUE;
                 break;
             }else
             {
-                printf("\nNENHUM ARQUIVO LIDO!!!\n");
+                printf("\nNENHUM ARQUIVO LIDO OU CAMINHO JA FOI CALCULADO!\n");
             }
             break;
         case 3:
